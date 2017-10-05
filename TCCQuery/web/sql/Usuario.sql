@@ -1,0 +1,12 @@
+﻿CREATE TABLE Usuario(
+	nome VARCHAR(100) NOT NULL,
+	cidade VARCHAR(100) NOT NULL,
+    nascimento VARCHAR(10) NOT NULL,
+	universidade VARCHAR(150) NOT NULL,
+	campus VARCHAR(100) NOT NULL,
+	email VARCHAR(100),
+	senha VARCHAR(100) NOT NULL,
+	sexo VARCHAR(10) NOT NULL,
+	foto TEXT NOT NULL,
+	PRIMARY KEY (email)
+)

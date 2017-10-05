@@ -1,0 +1,90 @@
+#divLog{
+  padding: 0% 25% 0% 25%;
+}
+
+#navBarNav{
+    border-radius: 0;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+#linkMenu{
+   color: white;       
+}
+
+#divImg{
+  margin: 10% 0% 4% 0%;
+}
+
+#imgLogin{
+    border: 0px;
+}
+
+#divBtLogin{
+  margin: 2% 30% 0% 30%;
+}
+
+#divCad{
+  padding: 0% 25% 0% 25%;
+}
+
+#divErro{
+    margin-top: 10%;
+}
+
+#imgErro{
+    margin-top: 10%;
+}
+
+#fotoPerfil{
+   background-color: white;
+   margin: 10% 0% 4% 0%;
+   height: 130px;
+   width: 40%;
+}
+
+#divMenu{
+    margin: 3% 0% 0% 0%;
+    border-style: solid;
+    border-color: lightslategray;
+    border-width: 1px;
+}
+
+#divPesLocal{
+    margin: 5% 0% 5% 0%;
+}
+
+#divContPes{
+    margin: 0% 30% 0% 30%;
+}
+
+#divPesbt{
+    margin: 0% 0% 0% 0%;
+}
+
+#btPes{
+    border-radius: 0;
+}
+
+#divMenuPes{
+    margin: 15% 0% 0% 0%;
+}
+
+#hMenu{
+    color: lightslategray;
+    margin: 4% 0% 10% 0%;
+}
+
+#divResultado{
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+#divPes{
+    padding: 0% 0% 0% 10%;
+}
+
+#hDados{
+    color: lightslategray;
+}
+
