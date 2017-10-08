@@ -9,7 +9,7 @@
         <title>Cadastro Tcc</title>
         <%@ include file="navbar.jsp"%>
     </head>
-    <body>
+    <body onload="selecionar('${tcc.area}')">
         <div class="container" id="divCad">
 
             <div class="row">
@@ -21,49 +21,49 @@
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
-                        <input type="text" name="titulo" class="form-control" placeholder="Título" aria-describedby="basic-addon1" required>
+                        <input type="text" name="titulo" value="${tcc.titulo}" class="form-control" placeholder="Título" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" name="autor" class="form-control" placeholder="Autor" aria-describedby="basic-addon1" required>
+                        <input type="text" name="autor" value="${tcc.autor}" class="form-control" placeholder="Autor" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" name="orientador" class="form-control" placeholder="Orientador" aria-describedby="basic-addon1" required>
+                        <input type="text" name="orientador" value="${tcc.orientador}" class="form-control" placeholder="Orientador" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-rub"></i></span>
-                        <input type="text" name="palavrasChave" class="form-control" placeholder="Palavras-Chave" aria-describedby="basic-addon1" required>
+                        <input type="text" name="palavrasChave" value="${tcc.palavrasChave}" class="form-control" placeholder="Palavras-Chave" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-list-alt"></i></span>
-                        <textarea type="text" name="resumo" class="form-control" placeholder="Resumo" aria-describedby="basic-addon1" required></textarea>
+                        <textarea type="text" name="resumo" class="form-control" placeholder="Resumo" aria-describedby="basic-addon1" required>${tcc.resumo}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="text" name="ano" class="form-control" placeholder="Ano" aria-describedby="basic-addon1" required>
+                        <input type="text" name="ano" value="${tcc.ano}" class="form-control" placeholder="Ano" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-background"></i></span>
-                        <select class="form-control" name="area" data-toggle="tooltip" title="Informe a área" required>
+                        <select class="form-control" name="area" id="area" data-toggle="tooltip" title="Informe a área" required>
                             <option readonly>Banco de Dados</option>
                             <option>Engenharia de Software</option>
                             <option>Redes</option>
@@ -74,6 +74,19 @@
                         </select>
                     </div>
                 </div>  
+
+                <script type="text/javascript">
+                    function selecionar(uf) {
+                        var area = document.getElementById("area");
+
+                        for (var i = 0; i < area.options.length; i++) {
+                            if (area.options[i].value == uf) {
+                                area.options[i].selected = "true";
+                                break;
+                            }
+                        }
+                    }
+                </script>
 
                 <div class="input-group input-group"> 
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-file"></i></span>

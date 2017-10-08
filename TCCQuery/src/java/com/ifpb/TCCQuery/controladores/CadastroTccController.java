@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import jdk.internal.org.xml.sax.SAXException;
 import org.apache.tika.exception.TikaException;
 
@@ -44,14 +45,20 @@ public class CadastroTccController implements ICommand, IFileManager {
         } catch (SAXException | TikaException | org.xml.sax.SAXException ex) {
             Logger.getLogger(CadastroTccController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         TccDaoRedis tccDaoRedis = new TccDaoRedis();
         tccDaoRedis.insert(tcc);
-
-        tccDaoMongo.insert(tcc.toDocument());
-
-        res.sendRedirect("inicial.jsp");
-
+        
+        
+        if(tccDaoMongo.insert(tcc.toDocument())){
+           req.removeAttribute("tcc");
+           tccDaoRedis.delete(tcc);
+           res.sendRedirect("inicial.jsp"); 
+        }else{
+           req.setAttribute("tcc", tccDaoRedis.read());
+           req.getRequestDispatcher("cadastroTcc.jsp").forward(req, res);
+        }
+        
     }
 
 }

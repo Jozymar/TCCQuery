@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pesquisar Por Autor</title>
+        <title>Busca TCC</title>
         <%@ include file="navbar.jsp"%>
     </head>
     <body>
@@ -19,7 +19,7 @@
                 <div id="divPesLocal">
                     <form action="FrontControl" method="post" >   
                         <div class="input-group input-group">
-                            <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
                             <input type="text" name="query" class="form-control" placeholder="Busque por Título, Autor, Ano, Orientador, Área ou Conteúdo" aria-describedby="basic-addon1" required>
                             <div class="input-group-btn">
                                 <input type="hidden" name="identificador" value="PesquisaTcc"> 
@@ -33,20 +33,20 @@
                     <c:when test="${not empty tccs}">
                         <c:forEach var="tccs" items="${tccs}" >
                             <form action="viewTcc.jsp" method="post">
-                                <div class="form-group">
+                                
                                     <div id="divResultado">
                                         <div id="divPes" class="form-group pull-left">
                                             <h3>Título: ${tccs.titulo}</h3>
                                             <h5 id="hDados">Autor: ${tccs.autor}</h5>
                                             <h5 id="hDados">Ano: ${tccs.ano}</h5>
-                                            <h5 id="hDados">Resumo: ${tccs.resumo}</h5>
+                                            <h5 id="hDadosResumo">Resumo: ${tccs.resumo}</h5>
                                         </div>
-                                        <div id="divPesbt" class="form-group">
+                                        <div id="divPesbt" class="form-group pull-right">
                                             <input type="hidden" name="id" value="${tccs.id}">
-                                            <input type="submit" class="btn btn-primary btn-md btn-block" id="btPes" role="button" value="Vizualizar PDF">
+                                            <button type="submit" class="btn btn-default btn-md" id="btPesPdf" role="button" value="Vizualizar PDF"><img src="imagens/pdf.png" alt="FotoPdf" class="img-responsive"></button>
                                         </div>
                                     </div>  
-                                </div>
+                               
                             </form>
                         </c:forEach>
                     </c:when>

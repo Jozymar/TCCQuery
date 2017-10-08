@@ -18,7 +18,40 @@ public class TccDaoRedis implements ITccDaoRedis {
         String json = gson.toJson(tcc);
 
         try {
-            return jedis.setex("1", 60, json).equals("OK");
+            return jedis.set("1", json).equals("OK");
+        } catch (JedisConnectionException j) {
+            return false;
+        }
+        
+    }
+    
+    @Override
+    public Tcc read() {
+
+        Jedis jedis = ConFactory.getConnectionRedis();
+
+        Gson gson = new Gson();
+ 
+        try {
+            Tcc t = gson.fromJson(jedis.get("1"), Tcc.class);
+            return t;
+        } catch (JedisConnectionException j) {
+            return null;
+        }
+        
+    }
+    
+    @Override
+    public boolean delete(Tcc tcc) {
+
+        Jedis jedis = ConFactory.getConnectionRedis();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(tcc);
+
+        try {
+            jedis.del("1");
+            return true;
         } catch (JedisConnectionException j) {
             return false;
         }

@@ -40,7 +40,7 @@
    background-color: white;
    margin: 10% 0% 4% 0%;
    height: 130px;
-   width: 40%;
+   width: 35%;
 }
 
 #divMenu{
@@ -48,6 +48,17 @@
     border-style: solid;
     border-color: lightslategray;
     border-width: 1px;
+}
+
+#iframeTcc{
+    margin-left: 5%;
+    width: 100%;
+    min-height: 550px;
+    border: none;
+}
+
+#divDadosPdf{
+    margin-right: 3%;
 }
 
 #divPesLocal{
@@ -59,7 +70,12 @@
 }
 
 #divPesbt{
-    margin: 0% 0% 0% 0%;
+    margin: 2% 1% 0% 0%;
+}
+
+#btPesPdf{
+    border: 0px;
+    border-radius: 0;
 }
 
 #btPes{
@@ -76,15 +92,30 @@
 }
 
 #divResultado{
+    margin: 0% 0% 3% 0%;
+    border-color: lightslategray;
     border-style: solid;
     border-width: 0.5px;
+    min-height: 160px;
 }
 
 #divPes{
-    padding: 0% 0% 0% 10%;
+    width: 65%;
+    margin: 0% 0% 0% 4%;
+}
+
+#divResumoPdf{
+    height: 140px;
+    overflow: auto;
 }
 
 #hDados{
     color: lightslategray;
+}
+
+#hDadosResumo{
+    color: lightslategray;
+    height: 30px;
+    overflow-x: auto;
 }
 
