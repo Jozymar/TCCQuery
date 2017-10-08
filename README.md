@@ -1,4 +1,4 @@
-# TCCQuery
+﻿# TCCQuery
 ## Sistema para Armazenar TCCs na WEB com Persistência Poliglota 
 
 ### Projeto da Disciplina de Banco de Dados não Convencionais.

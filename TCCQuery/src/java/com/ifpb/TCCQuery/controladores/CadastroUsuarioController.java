@@ -1,6 +1,6 @@
 package com.ifpb.TCCQuery.controladores;
 
-import com.ifpb.TCCQuery.daos.UsuarioDAO;
+import com.ifpb.TCCQuery.daos.UsuarioDaoPostgre;
 import com.ifpb.TCCQuery.entidades.Usuario;
 import com.ifpb.TCCQuery.interfaces.ICommand;
 import com.ifpb.TCCQuery.interfaces.IFileManager;
@@ -18,7 +18,7 @@ public class CadastroUsuarioController implements ICommand, IFileManager {
     public final void execute(HttpServletRequest req, HttpServletResponse res)
             throws SQLException, ClassNotFoundException, IOException, ServletException {
 
-        UsuarioDAO userDAO = new UsuarioDAO();
+        UsuarioDaoPostgre userDAO = new UsuarioDaoPostgre();
         Usuario u = new Usuario();
 
         if (userDAO.userExists(req.getParameter("email"))) {

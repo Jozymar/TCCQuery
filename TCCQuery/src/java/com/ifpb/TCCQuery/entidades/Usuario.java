@@ -15,7 +15,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nome, String cidade, String nascimento, String universidade, String campus, String email, String senha, String sexo, String foto) {
+    public Usuario(String nome, String cidade, String nascimento, 
+            String universidade, String campus, String email, String senha, 
+            String sexo, String foto) {
         this.nome = nome;
         this.cidade = cidade;
         this.nascimento = nascimento;
@@ -101,7 +103,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", cidade=" + cidade + ", nascimento=" + nascimento + ", universidade=" + universidade + ", campus=" + campus + ", email=" + email + ", senha=" + senha + ", sexo=" + sexo + ", foto=" + foto + '}';
+        return "Usuario{" + "nome=" + nome + ", cidade=" + cidade + 
+                ", nascimento=" + nascimento + ", universidade=" + 
+                universidade + ", campus=" + campus + ", email=" + 
+                email + ", senha=" + senha + ", sexo=" + sexo + 
+                ", foto=" + foto + '}';
     }
  
 }

@@ -1,6 +1,6 @@
 package com.ifpb.TCCQuery.controladores;
 
-import com.ifpb.TCCQuery.daos.UsuarioDAO;
+import com.ifpb.TCCQuery.daos.UsuarioDaoPostgre;
 import com.ifpb.TCCQuery.entidades.Usuario;
 import com.ifpb.TCCQuery.interfaces.IAutenticavelUsuario;
 import com.ifpb.TCCQuery.interfaces.ICommand;
@@ -22,7 +22,7 @@ public class LoginUsuarioController implements ICommand, IAutenticavelUsuario {
 
         if (autenticarUsuario(email, senha)) {
 
-            UsuarioDAO userDAO = new UsuarioDAO();
+            UsuarioDaoPostgre userDAO = new UsuarioDaoPostgre();
 
             Usuario u = userDAO.read(email);
 

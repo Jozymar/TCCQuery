@@ -1,0 +1,1 @@
+db.Tccs.createIndex( {"$**": "text"}, {"weights": { titulo:5, autor:4, orientador:3, ano:2, area:3, id:6 }},{default_language: "portuguese"} )

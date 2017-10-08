@@ -1,6 +1,6 @@
 package com.ifpb.TCCQuery.controladores;
 
-import com.ifpb.TCCQuery.daos.UsuarioDAO;
+import com.ifpb.TCCQuery.daos.UsuarioDaoPostgre;
 import com.ifpb.TCCQuery.entidades.Usuario;
 import com.ifpb.TCCQuery.interfaces.ICommand;
 import com.ifpb.TCCQuery.interfaces.IFileManager;
@@ -51,7 +51,7 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
             u.setSenha(req.getParameter("senha"));
             u.setSexo(req.getParameter("sexo"));
 
-            UsuarioDAO userDAO = new UsuarioDAO();
+            UsuarioDaoPostgre userDAO = new UsuarioDaoPostgre();
             if (userDAO.update(emailLogado, u)) {
                 session.setAttribute("email", u.getEmail());
                 session.setAttribute("senha", u.getSenha());

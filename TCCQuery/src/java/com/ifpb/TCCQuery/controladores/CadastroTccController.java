@@ -21,20 +21,22 @@ public class CadastroTccController implements ICommand, IFileManager {
     @Override
     public final void execute(HttpServletRequest req, HttpServletResponse res)
             throws SQLException, ClassNotFoundException, IOException, ServletException {
-
+        
         TccDaoMongo tccDaoMongo = new TccDaoMongo();
-
+        
         Tcc tcc = new Tcc();
-
         tcc.setTitulo(req.getParameter("titulo"));
         tcc.setAutor(req.getParameter("autor"));
         tcc.setOrientador(req.getParameter("orientador"));
         tcc.setPalavrasChave(req.getParameter("palavrasChave"));
         tcc.setResumo(req.getParameter("resumo"));
-        tcc.setAno(Integer.parseInt(req.getParameter("ano")));
+        tcc.setAno(req.getParameter("ano"));
         tcc.setArea(req.getParameter("area"));
-
+        tcc.setId(""+(tccDaoMongo.generatorID()+1));
+        
         String pdf = uploadFile("pdfs", req, req.getPart("pdf"));
+        tcc.setPath(pdf.substring(pdf.lastIndexOf("pdfs")));
+
         LeitorPdf leitorPDF = new LeitorPdf(pdf);
 
         try {
@@ -44,13 +46,10 @@ public class CadastroTccController implements ICommand, IFileManager {
         }
 
         TccDaoRedis tccDaoRedis = new TccDaoRedis();
-//        Gson gson = new Gson();
-//        String json = gson.toJson(tcc);
-//        Tcc tccRedis = gson.fromJson(json, Tcc.class);
-        
         tccDaoRedis.insert(tcc);
-        
+
         tccDaoMongo.insert(tcc.toDocument());
+
         res.sendRedirect("inicial.jsp");
 
     }

@@ -16,7 +16,7 @@
                         <h3>${sessionScope.nome}</h3>
                         <h5 id="hMenu">${sessionScope.universidade} - ${sessionScope.campus}</h5>
                         <a name="cadastroTcc" href="cadastroTcc.jsp" class="btn btn-primary btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-list-alt"></span> Cadastrar TCC</a>
-                        <a name="pesquisarTcc" href="pesquisaTcc.jsp" class="btn btn-primary btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-search"></span> Pesquisar</a>
+                        <a name="pesquisarTcc" href="buscaTcc.jsp" class="btn btn-primary btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-search"></span> Pesquisar TCC</a>
                         <a name="edPerfil" href="editarPerfil.jsp" class="btn btn-primary btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-pencil"></span> Editar Perfil</a><br>
                     </div>
                

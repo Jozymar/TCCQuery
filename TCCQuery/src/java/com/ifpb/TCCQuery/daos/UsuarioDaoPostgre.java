@@ -3,19 +3,19 @@ package com.ifpb.TCCQuery.daos;
 
 import com.ifpb.TCCQuery.conexao.ConFactory;
 import com.ifpb.TCCQuery.entidades.Usuario;
-import com.ifpb.TCCQuery.interfaces.IUsuarioDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.ifpb.TCCQuery.interfaces.IUsuarioDaoPostgre;
 
-public class UsuarioDAO implements IUsuarioDAO{
+public class UsuarioDaoPostgre implements IUsuarioDaoPostgre{
     
     @Override
     public Usuario read(String email) 
             throws SQLException, ClassNotFoundException {
 
-        Connection con = ConFactory.getConnection();
+        Connection con = ConFactory.getConnectionPostgre();
         PreparedStatement stmt = con.prepareStatement(
                 "SELECT * FROM usuario WHERE email = ?");
 
@@ -49,7 +49,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     public boolean insert(Usuario u) 
             throws SQLException, ClassNotFoundException {
         
-        Connection con = ConFactory.getConnection();
+        Connection con = ConFactory.getConnectionPostgre();
         PreparedStatement stmt = con.prepareStatement(
                 "INSERT INTO usuario (nome, cidade, nascimento, universidade, "
                 + "campus, email, senha, sexo, foto) "
@@ -76,7 +76,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     public boolean update(String email, Usuario u) 
             throws SQLException, ClassNotFoundException {
         
-        Connection con = ConFactory.getConnection();
+        Connection con = ConFactory.getConnectionPostgre();
         PreparedStatement stmt = con.prepareStatement(
                 "UPDATE usuario SET (nome, cidade, nascimento, universidade, campus, "
                         + "senha, sexo, foto, email) = (?,?,?,?,?,?,?,?,?) "
@@ -103,7 +103,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     public boolean userExists(String email) 
             throws ClassNotFoundException, SQLException{
 
-        Connection con = ConFactory.getConnection();
+        Connection con = ConFactory.getConnectionPostgre();
         PreparedStatement stmt = con.prepareStatement(
                 "SELECT * FROM usuario WHERE email = ?");
 

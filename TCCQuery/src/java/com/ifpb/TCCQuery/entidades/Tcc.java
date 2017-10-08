@@ -3,37 +3,25 @@ package com.ifpb.TCCQuery.entidades;
 import org.bson.Document;
 
 public class Tcc {
-   
-    private int id;
+    private String id;
     private String titulo;
     private String autor;
     private String orientador;
     private String palavrasChave;
     private String resumo;
-    private int ano;
+    private String ano;
     private String area;
     private String pdf;
+    private String path;
 
     public Tcc() {
     }
 
-    public Tcc(int id, String titulo, String autor, String orientador, String palavrasChave, String resumo, int ano, String area, String pdf) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.orientador = orientador;
-        this.palavrasChave = palavrasChave;
-        this.resumo = resumo;
-        this.ano = ano;
-        this.area = area;
-        this.pdf = pdf;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,11 +65,11 @@ public class Tcc {
         this.resumo = resumo;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
@@ -101,13 +89,17 @@ public class Tcc {
         this.pdf = pdf;
     }
 
-    @Override
-    public String toString() {
-        return "Tcc{" + "titulo=" + titulo + ", autor=" + autor + ", orientador=" + orientador + ", palavrasChave=" + palavrasChave + ", resumo=" + resumo + ", ano=" + ano + ", area=" + area + ", pdf=" + pdf + '}';
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Document toDocument() {
         Document doc = new Document()
+                .append("id", id)
                 .append("titulo", titulo)
                 .append("autor", autor)
                 .append("orientador", orientador)
@@ -115,19 +107,23 @@ public class Tcc {
                 .append("resumo", resumo)
                 .append("ano", ano)
                 .append("area", area)
-                .append("pdf", pdf);
+                .append("pdf", pdf)
+                .append("path", path); 
         return doc;
     }
     
     public Tcc fromDocument(Document doc){
+        id = doc.getString("id");
         titulo = doc.getString("titulo");
         autor = doc.getString("autor");
         orientador = doc.getString("orientador");
         palavrasChave = doc.getString("palavrasChave");
         resumo = doc.getString("resumo");
-        ano = doc.getInteger("ano");
+        ano = doc.getString("ano");
         area = doc.getString("area");
         pdf = doc.getString("pdf");
+        path = doc.getString("path");
         return this;
     } 
+    
 }

@@ -4,7 +4,7 @@ package com.ifpb.TCCQuery.interfaces;
 import com.ifpb.TCCQuery.entidades.Usuario;
 import java.sql.SQLException;
 
-public interface IUsuarioDAO {
+public interface IUsuarioDaoPostgre {
     
     public Usuario read(String email) 
             throws SQLException, ClassNotFoundException;
