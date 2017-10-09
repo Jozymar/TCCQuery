@@ -76,6 +76,7 @@
 #btPesPdf{
     border: 0px;
     border-radius: 0;
+    background-color: white;
 }
 
 #btPes{
@@ -96,7 +97,7 @@
     border-color: lightslategray;
     border-style: solid;
     border-width: 0.5px;
-    min-height: 160px;
+    min-height: 180px;
 }
 
 #divPes{
@@ -111,11 +112,5 @@
 
 #hDados{
     color: lightslategray;
-}
-
-#hDadosResumo{
-    color: lightslategray;
-    height: 30px;
-    overflow-x: auto;
 }
 

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +40,7 @@
                                             <h3>Título: ${tccs.titulo}</h3>
                                             <h5 id="hDados">Autor: ${tccs.autor}</h5>
                                             <h5 id="hDados">Ano: ${tccs.ano}</h5>
-                                            <h5 id="hDadosResumo">Resumo: ${tccs.resumo}</h5>
+                                            <h5 id="hDados">Resumo:${fn:substring(tccs.resumo, 0, 90)}...</h5>
                                         </div>
                                         <div id="divPesbt" class="form-group pull-right">
                                             <input type="hidden" name="id" value="${tccs.id}">

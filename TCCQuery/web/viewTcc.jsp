@@ -35,12 +35,14 @@
                                 <div class="panel-heading text-center">Sugestões de TCCs</div>
                                 <c:forEach var="tccs" items="${idsTccs}" >
                                     <ct:buscaTCC id="${tccs}" />
-                                    <form action="viewTcc.jsp" method="post">
-                                        <input type="hidden" name="id" value="${tcc.id}">
-                                        <button type="submit" class="panel-body text-center" id="btPesPdf" role="button" value="Vizualizar PDF">
-                                            <img src="imagens/pdfMini.png" alt="FotoPdf" class="img-responsive">${tcc.titulo}
-                                        </button>
-                                    </form>
+                                    <div class="panel-body text-center">
+                                        <form action="viewTcc.jsp" method="post">
+                                            <input type="hidden" name="id" value="${tcc.id}">
+                                            <button type="submit" class="btn-default" id="btPesPdf" role="button" value="Vizualizar PDF">
+                                                <img src="imagens/pdfSug.png" alt="FotoPdf" class="img-responsive pull-left"> &nbsp; ${tcc.titulo}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </c:forEach>                   
                             </div>
                         </div>
