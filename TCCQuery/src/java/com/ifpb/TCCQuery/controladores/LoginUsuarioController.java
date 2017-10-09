@@ -38,7 +38,7 @@ public class LoginUsuarioController implements ICommand, IAutenticavelUsuario {
             session.setAttribute("foto", u.getFoto());
 
             req.getRequestDispatcher("inicial.jsp").forward(req, res);
-            
+
         } else {
             res.sendRedirect("erroLogin.jsp");
         }

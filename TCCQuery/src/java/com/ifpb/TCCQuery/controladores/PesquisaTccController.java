@@ -13,14 +13,14 @@ public class PesquisaTccController implements ICommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws SQLException, ClassNotFoundException, IOException, ServletException {
-        
+
         String query = req.getParameter("query");
-        
+
         TccDaoMongo tccDaoMongo = new TccDaoMongo();
-        
-        req.setAttribute("tccs", tccDaoMongo.fullTextSearch(query));    
+
+        req.setAttribute("tccs", tccDaoMongo.fullTextSearch(query));
         req.getRequestDispatcher("buscaTcc.jsp").forward(req, res);
-        
+
     }
 
 }

@@ -18,7 +18,7 @@
                         <iframe name="interno"  id="iframeTcc" src="${tcc.path}"></iframe>
                     </div>
                 </div>
-                    <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
+                <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
                     <div class="panel panel-primary">
                         <div class="panel-heading text-center">Dados TCC</div>
                         <div class="panel-body text-center">Titulo: ${tcc.titulo}</div>
@@ -27,19 +27,32 @@
                         <div class="panel-body text-center" id="divResumoPdf">Resumo: ${tcc.resumo}</div>
                     </div>
                 </div>  
-                <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading text-center">Sugestões</div>
-                        <div class="panel-body text-center"><a name="sugestao" href="#" class="btn-link" role="button">Nome da Sugestão</a></div>
-                        <div class="panel-body text-center"><a name="sugestao" href="#" class="btn-link" role="button">Nome da Sugestão</a></div>
-                    </div>
-                </div>
 
-                <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading text-center">Nenhuma Sugestão Encontrada :(</div>
-                    </div>
-                </div>
+                <c:choose>
+                    <c:when test="${not empty idsTccs}">
+                        <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center">Sugestões de TCCs</div>
+                                <c:forEach var="tccs" items="${idsTccs}" >
+                                    <ct:buscaTCC id="${tccs}" />
+                                    <form action="viewTcc.jsp" method="post">
+                                        <input type="hidden" name="id" value="${tcc.id}">
+                                        <button type="submit" class="panel-body text-center" id="btPesPdf" role="button" value="Vizualizar PDF">
+                                            <img src="imagens/pdfMini.png" alt="FotoPdf" class="img-responsive">${tcc.titulo}
+                                        </button>
+                                    </form>
+                                </c:forEach>                   
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="col-sm-3 sidenav pull-right" id="divDadosPdf">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center">Nenhuma Sugestão Encontrada :(</div>
+                            </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </body>

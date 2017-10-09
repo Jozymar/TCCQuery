@@ -35,11 +35,11 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
             String sep = File.separator;
             String pathFolder = req.getServletContext().getRealPath("foto");
             removeFile(pathFolder + fotoLogada.substring(fotoLogada.lastIndexOf(sep)));
-            
+
             //Monta caminho da pasta de upload da imagem
             String foto = uploadFile("fotoPerfil", req,
                     req.getPart("foto"), req.getParameter("email"));
-            
+
             Usuario u = new Usuario();
             u.setNascimento(req.getParameter("nascimento"));
             u.setFoto(foto);
