@@ -13,4 +13,10 @@ public interface ITccDaoNeo4j {
 
     public void sessionClose();
 
+    public boolean nodeTccExists(String id);
+
+    public boolean nodeAreaExists(String area);
+
+    public boolean nodeOrientadorExists(String nome);
+
 }

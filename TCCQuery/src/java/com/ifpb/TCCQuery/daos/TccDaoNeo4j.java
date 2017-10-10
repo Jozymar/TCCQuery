@@ -19,12 +19,18 @@ public class TccDaoNeo4j implements ITccDaoNeo4j {
 
     @Override
     public void insertNode(Tcc tcc) {
-        session.run("CREATE (:Tcc{id: $id})",
-                Values.parameters("id", tcc.getId()));
-        session.run("CREATE (:Area{area: $area})",
-                Values.parameters("area", tcc.getArea()));
-        session.run("CREATE (:Orientador{nome: $nome})",
-                Values.parameters("nome", tcc.getOrientador()));
+        if (!nodeTccExists(tcc.getId())) {
+            session.run("CREATE (:Tcc{id: $id})",
+                    Values.parameters("id", tcc.getId()));
+        }
+        if (!nodeAreaExists(tcc.getArea())) {
+            session.run("CREATE (:Area{area: $area})",
+                    Values.parameters("area", tcc.getArea()));
+        }
+        if (!nodeOrientadorExists(tcc.getOrientador())) {
+            session.run("CREATE (:Orientador{nome: $nome})",
+                    Values.parameters("nome", tcc.getOrientador()));
+        }
     }
 
     @Override
@@ -55,6 +61,48 @@ public class TccDaoNeo4j implements ITccDaoNeo4j {
     @Override
     public void sessionClose() {
         session.close();
+    }
+
+    @Override
+    public boolean nodeTccExists(String id) {
+        boolean retorno = false;
+        StatementResult result = session.run("MATCH (t:Tcc) "
+                + "WHERE t.id = $id "
+                + "RETURN DISTINCT true as retorno",
+                Values.parameters("id", id));
+
+        if (result.hasNext()) {
+            retorno = Boolean.parseBoolean(result.next().get("retorno").toString());
+        }
+        return retorno;
+    }
+
+    @Override
+    public boolean nodeAreaExists(String area) {
+        boolean retorno = false;
+        StatementResult result = session.run("MATCH (a:Area) "
+                + "WHERE a.area = $area "
+                + "RETURN DISTINCT true as retorno",
+                Values.parameters("area", area));
+
+        if (result.hasNext()) {
+            retorno = Boolean.parseBoolean(result.next().get("retorno").toString());
+        }
+        return retorno;
+    }
+
+    @Override
+    public boolean nodeOrientadorExists(String nome) {
+        boolean retorno = false;
+        StatementResult result = session.run("MATCH (o:Orientador) "
+                + "WHERE o.nome = $nome "
+                + "RETURN DISTINCT true as retorno",
+                Values.parameters("nome", nome));
+
+        if (result.hasNext()) {
+            retorno = Boolean.parseBoolean(result.next().get("retorno").toString());
+        }
+        return retorno;
     }
 
 }

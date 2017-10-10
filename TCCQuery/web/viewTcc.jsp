@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="ct" uri="/WEB-INF/tlds/CustomTags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,12 +8,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pdf TCC</title>
         <%@ include file="navbar.jsp"%>
-    </head>
+    </head> 
     <body>
         <div class="container-fluid">
             <div class="row contant">
                 <div class="col-sm-8 sidenav">
-                    <ct:buscaTCC id="${param.id}" />
+
+                    <ct:buscaTcc id="${param.id}"/> 
+
                     <div>
                         <iframe name="interno"  id="iframeTcc" src="${tcc.path}"></iframe>
                     </div>
@@ -34,7 +36,7 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading text-center">Sugestões de TCCs</div>
                                 <c:forEach var="tccs" items="${idsTccs}" >
-                                    <ct:buscaTCC id="${tccs}" />
+                                    <ct:buscaTcc id="${tccs}" />
                                     <div class="panel-body text-center">
                                         <form action="viewTcc.jsp" method="post">
                                             <input type="hidden" name="id" value="${tcc.id}">
