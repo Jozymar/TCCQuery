@@ -1,5 +1,5 @@
 
-package com.ifpb.TCCQuery.filtro;
+package com.ifpb.TCCQuery.filtros;
 
 import java.io.IOException;
 import javax.servlet.Filter;
