@@ -59,11 +59,6 @@ public class TccDaoNeo4j implements ITccDaoNeo4j {
     }
 
     @Override
-    public void sessionClose() {
-        session.close();
-    }
-
-    @Override
     public boolean nodeTccExists(String id) {
         boolean retorno = false;
         StatementResult result = session.run("MATCH (t:Tcc) "
@@ -103,6 +98,11 @@ public class TccDaoNeo4j implements ITccDaoNeo4j {
             retorno = Boolean.parseBoolean(result.next().get("retorno").toString());
         }
         return retorno;
+    }
+
+    @Override
+    public void sessionClose() {
+        session.close();
     }
 
 }

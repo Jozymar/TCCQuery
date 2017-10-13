@@ -114,3 +114,10 @@
     color: lightslategray;
 }
 
+table {
+  width: 15em;
+}
+
+td {
+  padding: 0.1em 1em;
+}

@@ -10,6 +10,8 @@ public interface ITccDaoMongo {
 
     public List<Tcc> fullTextSearch(String query);
 
+    public List<Tcc> searchByYear(String ano);
+
     public int generatorID();
 
 }

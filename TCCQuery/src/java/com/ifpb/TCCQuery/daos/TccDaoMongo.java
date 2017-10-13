@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
 
-public class TccDaoMongo implements ITccDaoMongo{
+public class TccDaoMongo implements ITccDaoMongo {
 
     private MongoDatabase database;
     private MongoCollection<Document> colecao;
@@ -61,10 +61,34 @@ public class TccDaoMongo implements ITccDaoMongo{
     }
 
     @Override
+    public List<Tcc> searchByYear(String ano) {
+        try {
+            MongoCursor<Document> cursor = null;
+            cursor = colecao.find(new Document("ano", ano)).
+                    projection(Projections.metaTextScore("score")).
+                    sort(Sorts.metaTextScore("score")).iterator();
+            List<Tcc> tccs = new ArrayList<>();
+
+            while (cursor.hasNext()) {
+                Document searchTCC = cursor.next();
+                tccs.add(new Tcc().fromDocument(searchTCC));
+            }
+
+            cursor.close();
+            ConFactory.getConnectionMongo().close();
+            return tccs;
+        } catch (MongoTimeoutException j) {
+            ConFactory.getConnectionMongo().close();
+            return null;
+        }
+
+    }
+
+    @Override
     public int generatorID() {
         try {
             int qnt = (int) colecao.count();
-            
+
             ConFactory.getConnectionMongo().close();
 
             return qnt;

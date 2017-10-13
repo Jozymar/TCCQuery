@@ -41,7 +41,11 @@
                                         <form action="viewTcc.jsp" method="post">
                                             <input type="hidden" name="id" value="${tcc.id}">
                                             <button type="submit" class="btn-default" id="btPesPdf" role="button" value="Vizualizar PDF">
-                                                <img src="imagens/pdfSug.png" alt="FotoPdf" class="img-responsive pull-left"> &nbsp; ${tcc.titulo}
+                                                <table id="playlistTable">                                    
+                                                    <tr>
+                                                        <td><img src="imagens/pdfSug.png" alt="FotoPdf" class="img-responsive pull-left">${tcc.titulo}</td>                               
+                                                    </tr>                                     
+                                                </table>
                                             </button>
                                         </form>
                                     </div>

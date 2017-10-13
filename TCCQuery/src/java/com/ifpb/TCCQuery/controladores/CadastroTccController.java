@@ -3,7 +3,7 @@ package com.ifpb.TCCQuery.controladores;
 import com.ifpb.TCCQuery.daos.TccDaoMongo;
 import com.ifpb.TCCQuery.daos.TccDaoNeo4j;
 import com.ifpb.TCCQuery.daos.TccDaoRedis;
-import com.ifpb.TCCQuery.entidades.LeitorPdf;
+import com.ifpb.TCCQuery.daos.LeitorPdfDao;
 import com.ifpb.TCCQuery.entidades.Tcc;
 import com.ifpb.TCCQuery.interfaces.ICommand;
 import com.ifpb.TCCQuery.interfaces.IFileManager;
@@ -38,7 +38,7 @@ public class CadastroTccController implements ICommand, IFileManager {
         String pdf = uploadFile("pdfs", req, req.getPart("pdf"));
         tcc.setPath(pdf.substring(pdf.lastIndexOf("pdfs")));
 
-        LeitorPdf leitorPDF = new LeitorPdf(pdf);
+        LeitorPdfDao leitorPDF = new LeitorPdfDao(pdf);
 
         try {
             tcc.setPdf(leitorPDF.getText());
