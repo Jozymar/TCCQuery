@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(filterName = "filtroTCCQuery", urlPatterns = 
-        {"/buscaTcc.jsp", "/cadastroTcc.jsp", "/editarPerfil.jsp", "/inicial.jsp", "/viewTcc.jsp"})
+        {"/buscaTccPorConteudo.jsp", "/cadastroTcc.jsp", "/editarPerfil.jsp", "/inicial.jsp", "/viewTcc.jsp", "/buacaTccPorAno", "/pesquisaTcc"})
 public class FiltroTCCQuery implements Filter {
  
     @Override

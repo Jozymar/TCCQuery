@@ -9,54 +9,55 @@
         <title>Cadastro Tcc</title>
         <%@ include file="navbar.jsp"%>
     </head>
-    <body onload="selecionar('${tcc.area}')">
+    <body onload="selecionar('${sessionScope.tcc.area}')">
         <div class="container" id="divCad">
 
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h1>Cadastro Tcc</h1>
+                    <h5 id="hErro">${sessionScope.erro}</h5>
                 </div>
             </div>
             <form action="FrontControl" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
-                        <input type="text" name="titulo" value="${tcc.titulo}" class="form-control" placeholder="Título" aria-describedby="basic-addon1" required>
+                        <input type="text" name="titulo" value="${sessionScope.tcc.titulo}" class="form-control" placeholder="Título" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" name="autor" value="${tcc.autor}" class="form-control" placeholder="Autor" aria-describedby="basic-addon1" required>
+                        <input type="text" name="autor" value="${sessionScope.tcc.autor}" class="form-control" placeholder="Autor" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" name="orientador" value="${tcc.orientador}" class="form-control" placeholder="Orientador" aria-describedby="basic-addon1" required>
+                        <input type="text" name="orientador" value="${sessionScope.tcc.orientador}" class="form-control" placeholder="Orientador" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-rub"></i></span>
-                        <input type="text" name="palavrasChave" value="${tcc.palavrasChave}" class="form-control" placeholder="Palavras-Chave" aria-describedby="basic-addon1" required>
+                        <input type="text" name="palavrasChave" value="${sessionScope.tcc.palavrasChave}" class="form-control" placeholder="Palavras-Chave" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-list-alt"></i></span>
-                        <textarea type="text" name="resumo" class="form-control" placeholder="Resumo" aria-describedby="basic-addon1" required>${tcc.resumo}</textarea>
+                        <textarea type="text" name="resumo" class="form-control" placeholder="Resumo" aria-describedby="basic-addon1" required>${sessionScope.tcc.resumo}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group input-group"> 
                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="text" name="ano" value="${tcc.ano}" class="form-control" placeholder="Ano" aria-describedby="basic-addon1" required>
+                        <input type="text" name="ano" value="${sessionScope.tcc.ano}" class="form-control" placeholder="Ano" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 

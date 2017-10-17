@@ -121,3 +121,7 @@ table {
 td {
   padding: 0.1em 1em;
 }
+
+#hErro{
+    color: red;
+}

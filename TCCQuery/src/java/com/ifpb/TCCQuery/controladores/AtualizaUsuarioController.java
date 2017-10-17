@@ -33,9 +33,9 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
         } else {
 
             String sep = File.separator;
-            String pathFolder = req.getServletContext().getRealPath("foto");
+            String pathFolder = req.getServletContext().getRealPath("fotoPerfil");
             removeFile(pathFolder + fotoLogada.substring(fotoLogada.lastIndexOf(sep)));
-
+            
             //Monta caminho da pasta de upload da imagem
             String foto = uploadFile("fotoPerfil", req,
                     req.getPart("foto"), req.getParameter("email"));
@@ -62,7 +62,7 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
                 session.setAttribute("campus", u.getCampus());
                 session.setAttribute("sexo", u.getSexo());
                 session.setAttribute("nascimento", u.getNascimento());
-
+                
                 req.getRequestDispatcher("inicial.jsp").forward(req, res);
             } else {
                 res.sendRedirect("erro.jsp");

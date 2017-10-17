@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import jdk.internal.org.xml.sax.SAXException;
 import org.apache.tika.exception.TikaException;
 
@@ -48,18 +49,22 @@ public class CadastroTccController implements ICommand, IFileManager {
 
         TccDaoRedis tccDaoRedis = new TccDaoRedis();
         tccDaoRedis.insert(tcc);
-
+        HttpSession session = req.getSession();
+        
         if (tccDaoMongo.insert(tcc.toDocument())) {
             TccDaoNeo4j tccDaoNeo4j = new TccDaoNeo4j();
             tccDaoNeo4j.insertNode(tcc);
             tccDaoNeo4j.createRelationship(tcc);
             tccDaoNeo4j.sessionClose();
 
-            req.removeAttribute("tcc");
+            session.removeAttribute("tcc");
+            session.removeAttribute("erro");
             tccDaoRedis.delete(tcc);
             res.sendRedirect("inicial.jsp");
         } else {
-            req.setAttribute("tcc", tccDaoRedis.read());
+            
+            session.setAttribute("tcc", tccDaoRedis.read());
+            session.setAttribute("erro","Erro ao cadastrar TCC, tente novamente!");
             req.getRequestDispatcher("cadastroTcc.jsp").forward(req, res);
         }
 

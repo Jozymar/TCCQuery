@@ -20,7 +20,7 @@
                 <div id="divPesLocal">
                     <form action="FrontControl" method="post" >   
                         <div class="input-group input-group">
-                            <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
+                            <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
                             <input type="text" name="query" class="form-control" placeholder="Busque por Ano" aria-describedby="basic-addon1" required>
                             <div class="input-group-btn">
                                 <input type="hidden" name="identificador" value="PesquisaTcc"> 
